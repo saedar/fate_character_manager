@@ -1,0 +1,15 @@
+%h1 Listing skill_assignments
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+  %tbody
+    - @skill_assignments.each do |skill_assignment|
+      %tr
+        %td= link_to 'Show', skill_assignment
+        %td= link_to 'Edit', edit_skill_assignment_path(skill_assignment)
+        %td= link_to 'Destroy', skill_assignment, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Skill assignment', new_skill_assignment_path

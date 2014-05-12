@@ -1,0 +1,2 @@
+module StuntsHelper
+end

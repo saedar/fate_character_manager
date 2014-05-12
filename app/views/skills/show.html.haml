@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @skill.name
+%p
+  %strong Overcome:
+  = @skill.overcome
+%p
+  %strong Attack:
+  = @skill.attack
+%p
+  %strong Defend:
+  = @skill.defend
+%p
+  %strong Advantage:
+  = @skill.advantage
+= link_to 'Edit', edit_skill_path(@skill)
+|
+\#{link_to 'Back', skills_path}

@@ -1,0 +1,72 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @character.name
+%p
+  %strong Description:
+  = @character.description
+%p
+  %strong High concept:
+  = @character.high_concept
+%p
+  %strong Trouble:
+  = @character.trouble
+%p
+  %strong Phase one:
+  = @character.phase_one
+%p
+  %strong Phase two:
+  = @character.phase_two
+%p
+  %strong Phase three:
+  = @character.phase_three
+- if @character.stunts.size > 0
+  %table
+    %caption= 'Stunts'
+    %thead
+      %tr
+        %th= 'Name'
+        %th= 'Description'
+    %tbody
+      - @character.stunts.each do |stunt|
+        %tr
+          %td
+            = stunt.name
+          %td
+            = stunt.description
+- if @character.skill_assignments.size > 0
+  %fieldset
+    %legend= 'Stunts'
+    - @character.skill_assignments.each do |skill|
+      %p
+        = "Stunt: #{skill.name} "
+      %p
+        = skill.description
+= form_for [@character, Stunt.new] do |f|
+  %fieldset
+    %legend= 'New Stunt'
+    .field
+      = f.label :name
+      %br/
+      = f.text_field :name
+    .field
+      = f.label :description
+      %br/
+      = f.text_area :description
+    .actions
+      = f.submit
+= form_for [@character, SkillAssignment.new] do |f|
+  %fieldset
+    %legend= 'New Skill'
+    .field
+      = select('skill_assignment', 'skill_id', Skill.all.collect {|p| [ p.name, p.id ] }, {include_blank: true})
+    .field
+      = f.label :level
+      %br/
+      = f.number_field :level, {size: 2, maxlength: 2, min: 0, max: 10}
+    .actions
+      = f.submit
+
+= link_to 'Edit', edit_character_path(@character)
+|
+\#{link_to 'Back', characters_path}

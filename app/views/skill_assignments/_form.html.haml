@@ -1,0 +1,11 @@
+= form_for(@skill_assignment) do |f|
+  - if @skill_assignment.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@skill_assignment.errors.count, "error")
+        prohibited this skill_assignment from being saved:
+      %ul
+        - @skill_assignment.errors.full_messages.each do |msg|
+          %li= msg
+  .actions
+    = f.submit

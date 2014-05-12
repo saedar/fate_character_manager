@@ -1,0 +1,19 @@
+%h1 Listing stunts
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+  %tbody
+    - @stunts.each do |stunt|
+      %tr
+        %td= stunt.name
+        %td= stunt.description
+        %td= link_to 'Show', stunt
+        %td= link_to 'Edit', edit_stunt_path(stunt)
+        %td= link_to 'Destroy', stunt, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Stunt', new_stunt_path

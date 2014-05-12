@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  high_concept: MyString
+  trouble: MyString
+  phase_one: MyString
+  phase_two: MyString
+  phase_three: MyString
+
+two:
+  name: MyString
+  description: MyText
+  high_concept: MyString
+  trouble: MyString
+  phase_one: MyString
+  phase_two: MyString
+  phase_three: MyString

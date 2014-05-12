@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @stunt.name
+%p
+  %strong Description:
+  = @stunt.description
+= link_to 'Edit', edit_stunt_path(@stunt)
+|
+\#{link_to 'Back', stunts_path}
