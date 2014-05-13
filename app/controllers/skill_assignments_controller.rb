@@ -24,17 +24,10 @@ class SkillAssignmentsController < ApplicationController
   # POST /skill_assignments
   # POST /skill_assignments.json
   def create
-    @skill_assignment = SkillAssignment.new(skill_assignment_params)
+    @character = Character.find(params[:character_id])
+    @skill_assignment = @character.skill_assignments.create!(skill_assignment_params)
 
-    respond_to do |format|
-      if @skill_assignment.save
-        format.html { redirect_to @skill_assignment, notice: 'Skill assignment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @skill_assignment }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @skill_assignment.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to @character, notice: 'Skill Added!'
   end
 
   # PATCH/PUT /skill_assignments/1
@@ -69,6 +62,6 @@ class SkillAssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_assignment_params
-      params[:skill_assignment]
+      params.require(:skill_assignment).permit(:character_id, :skill_id, :level)
     end
 end

@@ -35,13 +35,17 @@
           %td
             = stunt.description
 - if @character.skill_assignments.size > 0
-  %fieldset
-    %legend= 'Stunts'
+  %table
+    %caption= 'Skills'
+    %thead
+      %tr
+        %th= 'Skill'
+        %th= 'Value'
+    %tbody
     - @character.skill_assignments.each do |skill|
-      %p
-        = "Stunt: #{skill.name} "
-      %p
-        = skill.description
+      %tr
+        %td= skill_assignment(skill.skill_id).name
+        %td= skill.level
 = form_for [@character, Stunt.new] do |f|
   %fieldset
     %legend= 'New Stunt'
