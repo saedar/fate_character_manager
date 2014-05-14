@@ -6,7 +6,12 @@ Personally tooling around with a Character Manager for the Fate Core RPG.
 
 ## Usage
 
-...placeholder...
+1. Run `git clone` for the repo.
+2. Run `bundle install` from the application root.
+3. Run `rails s` to start the application server.
+
+For ease, seed data is provided for the default skill list from the Fate Core RPG.
+To use, run `rake db:seed`.
 
 ## Attribution
 
