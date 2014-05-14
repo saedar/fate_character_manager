@@ -10,6 +10,7 @@ gem 'mongoid', '~> 4.0.0.beta1', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'rspec'
 gem 'haml-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 group :doc do
   gem 'sdoc', require: false

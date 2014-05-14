@@ -21,7 +21,7 @@
   %strong Phase three:
   = @character.phase_three
 - if @character.stunts.size > 0
-  %table
+  %table.table.table-bordered
     %caption= 'Stunts'
     %thead
       %tr
@@ -35,7 +35,7 @@
           %td
             = stunt.description
 - if @character.skill_assignments.size > 0
-  %table
+  %table.table.table-bordered
     %caption= 'Skills'
     %thead
       %tr
