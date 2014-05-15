@@ -46,6 +46,8 @@
       %tr
         %td= skill_assignment(skill.skill_id).name
         %td= skill.level
+        %td
+          = link_to 'Edit', edit_character_skill_assignment_path(character_id: @character.id, id: skill.id)
 = form_for [@character, Stunt.new] do |f|
   %fieldset
     %legend= 'New Stunt'

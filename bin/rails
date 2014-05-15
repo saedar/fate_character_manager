@@ -1,4 +1,54 @@
 #!/usr/bin/env ruby
+
+# Returns the index of the first argument in the command line argument list (ARGV array) which equals one of the
+# given method arguments; otherwise, returns nil.
+# If a block is provided, yields the block if at least one of the arguments expected is found.
+def find_argument(*arguments, &block)
+  index = ARGV.find_index { |element| arguments.include?(element) }
+  yield(index) if index && block_given?
+  index
+end
+
+# Returns the index of the first argument in the command line argument list (ARGV array) which equals one of the
+# given method arguments; otherwise, returns nil.
+# If a block is provided, yields the block if at least one of the arguments expected is found.
+# Also deletes the argument found.
+def find_argument!(*arguments, &block)
+  index = find_argument(*arguments, &block)
+  ARGV.delete_at(index) if index
+  index
+end
+
+find_argument!('-r', '--remote') do |index|
+  hostname = Socket.gethostname.downcase
+  ENV['SESSION_DOMAIN'] ||= hostname.include?('.cerner.com') ? hostname : "#{hostname}.cerner.com"
+  puts "=> Session Domain is being set to #{ENV['SESSION_DOMAIN']}"
+end
+
+ARGV << '--help' if ARGV.empty?
+find_argument('-h', '--help') do |index|
+  puts <<-help_doc
+Usage: Application-specific options for running locally
+    -m, --multi                   Enables local testing of multi-tenancy.
+                                  This allows the application to be accessed
+                                  locally at <client>.smartregistries.
+                                  localhealthinent.com, for properly configured
+                                  clients.
+
+    -r, --remote                  Allows the application to be accessed remotely
+                                  via the device hostname
+                                  (e.g. mac-<associate-ID>.cerner.com).
+                                  The application cannot be accessed at
+                                  'localhost' when this option is in use.
+
+    -s ENV, --services_env ENV    Specifies the application services environment
+                                  to use. Available environments: 'local',
+                                  'development' and 'staging'. Defaults to
+                                  'local'.
+
+  help_doc
+end
+
 APP_PATH = File.expand_path('../../config/application',  __FILE__)
 require_relative '../config/boot'
 require 'rails/commands'

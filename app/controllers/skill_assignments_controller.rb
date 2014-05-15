@@ -57,7 +57,8 @@ class SkillAssignmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_skill_assignment
-      @skill_assignment = SkillAssignment.find(params[:id])
+      @character = Character.find(params[:character_id])
+      @skill_assignment = @character.skill_assignments.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
