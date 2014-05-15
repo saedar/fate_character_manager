@@ -35,7 +35,7 @@ class StuntsController < ApplicationController
   def update
     respond_to do |format|
       if @stunt.update(stunt_params)
-        format.html { redirect_to @stunt, notice: 'Stunt was successfully updated.' }
+        format.html { redirect_to @character, notice: 'Stunt was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -49,7 +49,7 @@ class StuntsController < ApplicationController
   def destroy
     @stunt.destroy
     respond_to do |format|
-      format.html { redirect_to stunts_url }
+      format.html { redirect_to @character }
       format.json { head :no_content }
     end
   end
@@ -57,7 +57,8 @@ class StuntsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stunt
-      @stunt = Stunt.find(params[:id])
+      @character = Character.find(params[:character_id])
+      @stunt = @character.stunts.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

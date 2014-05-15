@@ -49,7 +49,7 @@ class SkillAssignmentsController < ApplicationController
   def destroy
     @skill_assignment.destroy
     respond_to do |format|
-      format.html { redirect_to skill_assignments_url }
+      format.html { redirect_to @character }
       format.json { head :no_content }
     end
   end

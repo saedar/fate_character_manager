@@ -30,10 +30,11 @@
     %tbody
       - @character.stunts.each do |stunt|
         %tr
-          %td
-            = stunt.name
-          %td
-            = stunt.description
+          %td= stunt.name
+          %td= stunt.description
+          %td= link_to 'Edit', edit_character_stunt_path(character_id: @character.id, id: stunt.id)
+          %td= link_to 'Delete', character_stunt_path(character_id: @character.id, id: stunt.id),
+            method: :delete, data: { confirm: 'Are you sure?' }
 - if @character.skill_assignments.size > 0
   %table.table.table-bordered
     %caption= 'Skills'
@@ -46,8 +47,9 @@
       %tr
         %td= skill_assignment(skill.skill_id).name
         %td= skill.level
-        %td
-          = link_to 'Edit', edit_character_skill_assignment_path(character_id: @character.id, id: skill.id)
+        %td= link_to 'Edit', edit_character_skill_assignment_path(character_id: @character.id, id: skill.id)
+        %td= link_to 'Delete', character_skill_assignment_path(character_id: @character.id, id: skill.id),
+          method: :delete, data: { confirm: 'Are you sure?' }
 = form_for [@character, Stunt.new] do |f|
   %fieldset
     %legend= 'New Stunt'
@@ -75,4 +77,4 @@
 
 = link_to 'Edit', edit_character_path(@character)
 |
-\#{link_to 'Back', characters_path}
+= link_to 'Back', characters_path

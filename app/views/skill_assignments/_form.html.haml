@@ -8,7 +8,6 @@
         - @skill_assignment.errors.full_messages.each do |msg|
           %li= msg
   %table.table.table-bordered
-    - binding.pry
     %caption= 'Skills'
     %thead
       %tr
@@ -17,7 +16,6 @@
     %tbody
       %tr
         %td= skill_assignment(@skill_assignment.skill_id).name
-        %td
-          = f.text_field :level, value: @skill_assignment.level
+        %td= f.text_field :level, value: @skill_assignment.level
   .actions
     = f.submit

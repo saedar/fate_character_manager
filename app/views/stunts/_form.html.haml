@@ -1,11 +1,21 @@
-= form_for(@stunt) do |f|
-    .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :description
-    %br/
-    = f.text_area :description
+= form_for(@stunt, url: character_stunt_path) do |f|
+  - if @stunt.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@stunt.errors.count, "error")
+        prohibited this stunt from being saved:
+      %ul
+        - @stunt.errors.full_messages.each do |msg|
+          %li= msg
+  %table.table.table-bordered
+    %caption= 'Stunts'
+    %thead
+      %tr
+        %th= 'Name'
+        %th= 'Description'
+    %tbody
+      %tr
+        %td= @stunt.name
+        %td= f.text_area :description, value: @stunt.description
   .actions
     = f.submit
