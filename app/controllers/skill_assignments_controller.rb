@@ -35,7 +35,7 @@ class SkillAssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @skill_assignment.update(skill_assignment_params)
-        format.html { redirect_to @skill_assignment, notice: 'Skill assignment was successfully updated.' }
+        format.html { redirect_to @character, notice: 'Skill assignment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
