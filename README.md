@@ -1,8 +1,10 @@
-# fate_character_manager
+# Fate Character Manager
 
 ## Introduction
 
 Personally tooling around with a Character Manager for the Fate Core RPG.
+
+Each person at the table has a character they are embodying. Like any game, it has rules, structure and mechanics that define it. Similarly, each character is a collection of phrases, descriptors and statistics that help give it meaningful form in the game. The application serves as a digital repository for those characters, so you don't have to carry around a sheet of paper all the time.
 
 ## Usage
 
