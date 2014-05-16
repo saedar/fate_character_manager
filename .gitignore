@@ -15,7 +15,7 @@
 /log/*.log
 /tmp
 
-### Rails
+# Rails
 *.rbc
 *.sassc
 .sass-cache
@@ -30,10 +30,13 @@ capybara-*.html
 # Ignore RubyMine files
 /.idea
 
-### VIM
+# VIM
 .*.s[a-w][a-z]
 Session.vim
 .netrwhist
 *~
 *.swp
 *.un~
+
+# OSX
+.DS_Store
