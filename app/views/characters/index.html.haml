@@ -1,16 +1,14 @@
-%h1 Listing characters
+%h1 Characters
 %table.table.table-hover
   %thead
     %tr
       %th Name
       %th Description
-      %th High concept
+      %th High Concept
       %th Trouble
-      %th Phase one
-      %th Phase two
-      %th Phase three
-      %th
-      %th
+      %th Phase One
+      %th Phase Two
+      %th Phase Three
       %th
   %tbody
     - @characters.each do |character|
@@ -22,9 +20,10 @@
         %td= character.phase_one
         %td= character.phase_two
         %td= character.phase_three
-        %td= link_to '', character, class: 'glyphicon glyphicon-eye-open', title: 'View Character'
-        %td= link_to '', edit_character_path(character), class: 'glyphicon glyphicon-edit', title: 'Edit Character'
-        %td= link_to '', character, class: 'glyphicon glyphicon-remove', title: 'Delete Character', method: :delete,
-          data: { confirm: 'Are you sure?' }
+        %td
+          = link_to '', character, class: 'glyphicon glyphicon-eye-open', title: 'View Character'
+          = link_to '', edit_character_path(character), class: 'glyphicon glyphicon-edit', title: 'Edit Character'
+          = link_to '', character, class: 'glyphicon glyphicon-remove', title: 'Delete Character', method: :delete,
+            data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Character', new_character_path

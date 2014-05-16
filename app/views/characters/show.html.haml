@@ -1,29 +1,29 @@
 %p#notice= notice
 .container-fluid
-  %p
+  %p.sheet-components
     %strong Name:
     = @character.name
-  %p
+  %p.sheet-components
     %strong Description:
     = @character.description
-  %p
-    %strong High concept:
+  %p.sheet-components
+    %strong High Concept:
     = @character.high_concept
-  %p
+  %p.sheet-components
     %strong Trouble:
     = @character.trouble
-  %p
-    %strong Phase one:
+  %p.sheet-components
+    %strong Phase One:
     = @character.phase_one
-  %p
-    %strong Phase two:
+  %p.sheet-components
+    %strong Phase Two:
     = @character.phase_two
-  %p
-    %strong Phase three:
+  %p.sheet-components
+    %strong Phase Three:
     = @character.phase_three
 .container-fluid
   - if @character.stunts.size > 0
-    %table.table.table-striped
+    %table.table.table-striped.sheet-components.col-md-6
       %caption= 'Stunts'
       %thead
         %tr
@@ -42,14 +42,14 @@
                 class: 'glyphicon glyphicon-remove', title: 'Delete Skill',
                 method: :delete, data: { confirm: 'Are you sure?' }
   - if @character.skill_assignments.size > 0
-    %table.table.table-striped
+    %table.table.table-striped.sheet-components.col-md-6
       %caption= 'Skills'
       %thead
         %tr
           %th= 'Skill'
           %th= 'Value'
       %tbody
-      - @character.skill_assignments.each do |skill|
+      - @character.skill_assignments.sort_by{|s|-1 * s.level.to_i}.each do |skill|
         %tr
           %td= skill_assignment(skill.skill_id).name
           %td= skill.level
@@ -61,7 +61,7 @@
               method: :delete, data: { confirm: 'Are you sure?' }
 .container-fluid
   = form_for [@character, Stunt.new] do |f|
-    %fieldset.col-md-6
+    %fieldset.sheet-components.col-md-6
       %legend= 'New Stunt'
       .field
         = f.label :name
@@ -70,11 +70,11 @@
       .field
         = f.label :description
         %br/
-        = f.text_area :description
+        = f.text_area :description, size: "50x4"
       .actions
-        = f.submit
+        = f.submit 'Add Stunt'
   = form_for [@character, SkillAssignment.new] do |f|
-    %fieldset.col-md-6
+    %fieldset.sheet-components.col-md-6
       %legend= 'New Skill'
       .field
         = select('skill_assignment', 'skill_id', Skill.all.collect {|p| [ p.name, p.id ] }, {include_blank: true})
@@ -83,7 +83,7 @@
         %br/
         = f.number_field :level, {size: 2, maxlength: 2, min: 0, max: 10}
       .actions
-        = f.submit
+        = f.submit 'Add Skill'
 
 = link_to 'Edit', edit_character_path(@character)
 |

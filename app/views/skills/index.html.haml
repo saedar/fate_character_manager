@@ -1,4 +1,4 @@
-%h1 Listing skills
+%h1 Skill Reference
 %table.table.table-hover
   %thead
     %tr
@@ -8,8 +8,6 @@
       %th Defend
       %th Advantage
       %th
-      %th
-      %th
   %tbody
     - @skills.each do |skill|
       %tr
@@ -18,9 +16,10 @@
         %td.fate-icons{title: 'Attack!'}= skill.attack ? 'A' : ''
         %td.fate-icons{title: 'Defend!'}= skill.defend ? 'D' : ''
         %td.fate-icons{title: 'Create an Advantage!'}= skill.advantage ? 'C' : ''
-        %td= link_to '', skill, class: 'glyphicon glyphicon-eye-open', title: 'View Skill'
-        %td= link_to '', edit_skill_path(skill), class: 'glyphicon glyphicon-edit', title: 'Edit Skill'
-        %td= link_to '', skill, class: 'glyphicon glyphicon-remove', title: 'Delete Skill', method: :delete,
-          data: { confirm: 'Are you sure?' }
+        %td
+          = link_to '', skill, class: 'glyphicon glyphicon-eye-open', title: 'View Skill'
+          = link_to '', edit_skill_path(skill), class: 'glyphicon glyphicon-edit', title: 'Edit Skill'
+          = link_to '', skill, class: 'glyphicon glyphicon-remove', title: 'Delete Skill', method: :delete,
+            data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Skill', new_skill_path

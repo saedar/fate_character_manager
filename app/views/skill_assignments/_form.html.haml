@@ -16,6 +16,6 @@
     %tbody
       %tr
         %td= skill_assignment(@skill_assignment.skill_id).name
-        %td= f.text_field :level, value: @skill_assignment.level
+        %td= f.number_field :level, {size: 2, maxlength: 2, min: 0, max: 10, value: @skill_assignment.level}
   .actions
     = f.submit

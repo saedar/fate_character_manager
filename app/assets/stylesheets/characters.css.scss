@@ -8,3 +8,13 @@ legend {
   font-size: 100%;
   font-weight: bold;
 }
+
+.sheet-components {
+  width: 40%;
+  margin-right: 3rem;
+  margin-top: 2rem;
+
+  th, td {
+    max-width: 250px;
+  }
+}
