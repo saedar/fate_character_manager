@@ -1,5 +1,6 @@
 FateCharacterManager::Application.routes.draw do
 
+  get "attribution/index"
   resources :characters do
     resources :skill_assignments
     resources :stunts

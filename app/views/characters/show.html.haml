@@ -1,79 +1,89 @@
 %p#notice= notice
-%p
-  %strong Name:
-  = @character.name
-%p
-  %strong Description:
-  = @character.description
-%p
-  %strong High concept:
-  = @character.high_concept
-%p
-  %strong Trouble:
-  = @character.trouble
-%p
-  %strong Phase one:
-  = @character.phase_one
-%p
-  %strong Phase two:
-  = @character.phase_two
-%p
-  %strong Phase three:
-  = @character.phase_three
-- if @character.stunts.size > 0
-  %table.table.table-bordered
-    %caption= 'Stunts'
-    %thead
-      %tr
-        %th= 'Name'
-        %th= 'Description'
-    %tbody
-      - @character.stunts.each do |stunt|
+.container-fluid
+  %p
+    %strong Name:
+    = @character.name
+  %p
+    %strong Description:
+    = @character.description
+  %p
+    %strong High concept:
+    = @character.high_concept
+  %p
+    %strong Trouble:
+    = @character.trouble
+  %p
+    %strong Phase one:
+    = @character.phase_one
+  %p
+    %strong Phase two:
+    = @character.phase_two
+  %p
+    %strong Phase three:
+    = @character.phase_three
+.container-fluid
+  - if @character.stunts.size > 0
+    %table.table.table-striped
+      %caption= 'Stunts'
+      %thead
         %tr
-          %td= stunt.name
-          %td= stunt.description
-          %td= link_to 'Edit', edit_character_stunt_path(character_id: @character.id, id: stunt.id)
-          %td= link_to 'Delete', character_stunt_path(character_id: @character.id, id: stunt.id),
-            method: :delete, data: { confirm: 'Are you sure?' }
-- if @character.skill_assignments.size > 0
-  %table.table.table-bordered
-    %caption= 'Skills'
-    %thead
-      %tr
-        %th= 'Skill'
-        %th= 'Value'
-    %tbody
-    - @character.skill_assignments.each do |skill|
-      %tr
-        %td= skill_assignment(skill.skill_id).name
-        %td= skill.level
-        %td= link_to 'Edit', edit_character_skill_assignment_path(character_id: @character.id, id: skill.id)
-        %td= link_to 'Delete', character_skill_assignment_path(character_id: @character.id, id: skill.id),
-          method: :delete, data: { confirm: 'Are you sure?' }
-= form_for [@character, Stunt.new] do |f|
-  %fieldset
-    %legend= 'New Stunt'
-    .field
-      = f.label :name
-      %br/
-      = f.text_field :name
-    .field
-      = f.label :description
-      %br/
-      = f.text_area :description
-    .actions
-      = f.submit
-= form_for [@character, SkillAssignment.new] do |f|
-  %fieldset
-    %legend= 'New Skill'
-    .field
-      = select('skill_assignment', 'skill_id', Skill.all.collect {|p| [ p.name, p.id ] }, {include_blank: true})
-    .field
-      = f.label :level
-      %br/
-      = f.number_field :level, {size: 2, maxlength: 2, min: 0, max: 10}
-    .actions
-      = f.submit
+          %th= 'Name'
+          %th= 'Description'
+          %th
+      %tbody
+        - @character.stunts.each do |stunt|
+          %tr
+            %td= stunt.name
+            %td= stunt.description
+            %td
+              = link_to '', edit_character_stunt_path(character_id: @character.id, id: stunt.id),
+                class: 'glyphicon glyphicon-edit', title: 'Edit Stunt'
+              = link_to '', character_stunt_path(character_id: @character.id, id: stunt.id),
+                class: 'glyphicon glyphicon-remove', title: 'Delete Skill',
+                method: :delete, data: { confirm: 'Are you sure?' }
+  - if @character.skill_assignments.size > 0
+    %table.table.table-striped
+      %caption= 'Skills'
+      %thead
+        %tr
+          %th= 'Skill'
+          %th= 'Value'
+      %tbody
+      - @character.skill_assignments.each do |skill|
+        %tr
+          %td= skill_assignment(skill.skill_id).name
+          %td= skill.level
+          %td
+            = link_to '', edit_character_skill_assignment_path(character_id: @character.id, id: skill.id),
+              class: 'glyphicon glyphicon-edit', title: 'Edit Skill Value'
+            = link_to '', character_skill_assignment_path(character_id: @character.id, id: skill.id),
+              class: 'glyphicon glyphicon-remove', title: 'Delete Skill',
+              method: :delete, data: { confirm: 'Are you sure?' }
+.container-fluid
+  = form_for [@character, Stunt.new] do |f|
+    %fieldset.col-md-6
+      %legend= 'New Stunt'
+      .field
+        = f.label :name
+        %br/
+        = f.text_field :name
+      .field
+        = f.label :description
+        %br/
+        = f.text_area :description
+      .actions
+        = f.submit
+  = form_for [@character, SkillAssignment.new] do |f|
+    %fieldset.col-md-6
+      %legend= 'New Skill'
+      .field
+        = select('skill_assignment', 'skill_id', Skill.all.collect {|p| [ p.name, p.id ] }, {include_blank: true})
+      .field
+        = f.label :level
+        %br/
+        = f.number_field :level, {size: 2, maxlength: 2, min: 0, max: 10}
+      .actions
+        = f.submit
 
 = link_to 'Edit', edit_character_path(@character)
 |

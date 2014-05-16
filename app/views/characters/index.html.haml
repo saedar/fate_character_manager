@@ -22,8 +22,9 @@
         %td= character.phase_one
         %td= character.phase_two
         %td= character.phase_three
-        %td= link_to 'Show', character
-        %td= link_to 'Edit', edit_character_path(character)
-        %td= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to '', character, class: 'glyphicon glyphicon-eye-open', title: 'View Character'
+        %td= link_to '', edit_character_path(character), class: 'glyphicon glyphicon-edit', title: 'Edit Character'
+        %td= link_to '', character, class: 'glyphicon glyphicon-remove', title: 'Delete Character', method: :delete,
+          data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Character', new_character_path

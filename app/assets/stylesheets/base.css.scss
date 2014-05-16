@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'FateCoreFont';
+  src: font-url('FateCoreFont.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fate-icons {
+  font-family:'FateCoreFont';
+  font-size: 150%;
+}
+
 .content {
   margin-left: 10%;
   margin-right: 10%;
@@ -11,4 +23,8 @@ caption {
 
 nav {
   background-color: $gray-darker;
+}
+
+.table th {
+  white-space: nowrap;
 }

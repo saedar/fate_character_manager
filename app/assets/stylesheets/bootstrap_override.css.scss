@@ -5,3 +5,15 @@
 .navbar {
   margin-bottom: 0;
 }
+
+.glyphicon {
+  font-size: 150%;
+}
+
+nav.navbar-static-top a {
+  color: white;
+
+  &:hover {
+    color: $gray-dark;
+  }
+}
