@@ -2,6 +2,11 @@
   width: 85%;
   margin-left: auto;
   margin-right: auto;
+
+  th, td {
+    max-width: 250px;
+    min-width: 100px;
+  }
 }
 
 legend {

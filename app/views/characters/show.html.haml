@@ -72,18 +72,20 @@
         %br/
         = f.text_area :description, size: "50x4"
       .actions
-        = f.submit 'Add Stunt'
+        = f.submit 'Add Stunt', class: 'btn btn-primary'
   = form_for [@character, SkillAssignment.new] do |f|
     %fieldset.sheet-components.col-md-6
       %legend= 'New Skill'
       .field
+        = f.label :skill_id, 'Skill'
+        %br/
         = select('skill_assignment', 'skill_id', Skill.all.collect {|p| [ p.name, p.id ] }, {include_blank: true})
       .field
         = f.label :level
         %br/
         = f.number_field :level, {size: 2, maxlength: 2, min: 0, max: 10}
       .actions
-        = f.submit 'Add Skill'
+        = f.submit 'Add Skill', class: 'btn btn-primary'
 
 = link_to 'Edit', edit_character_path(@character)
 |
