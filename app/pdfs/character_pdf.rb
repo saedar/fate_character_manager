@@ -1,11 +1,12 @@
 class CharacterPdf < Prawn::Document
   def initialize(character, view)
-    super(top_margin: 25, left_margin: 25, right_margin: 25)
+    img = Rails.root.join('app', 'assets', 'images', 'pdf_background_brown_ice.jpg').to_s
+
+    super(top_margin: 25, left_margin: 25, right_margin: 25, background: img)
     @character = character
     @view = view
 
     character_header
-    aspects
     stats
   end
 
@@ -13,17 +14,21 @@ class CharacterPdf < Prawn::Document
     text 'Character Sheet', align: :center, size: 30, style: :bold
 
     move_down 25
-    text "<b>Character Name:</b> #{@character.name}", inline_format: true
-    text "<b>High Concept:</b> #{@character.high_concept}", inline_format: true
-    text "<b>Trouble:</b> #{@character.trouble}", inline_format: true
-    text "<b>Description:</b> #{@character.description}", inline_format: true
+    table header_rows, position: :left, row_colors: ['E6E6E6', 'FFFFFF'] do
+      column(0).font_style = :bold
+    end
   end
 
-  def aspects
-    move_down 10
-    text "<b>Phase One:</b> #{@character.phase_one}", inline_format: true
-    text "<b>Phase Two:</b> #{@character.phase_two}", inline_format: true
-    text "<b>Phase Three:</b> #{@character.phase_three}", inline_format: true
+  def header_rows
+    [
+      ['Character Name', @character.name],
+      ['High Concept', @character.high_concept],
+      ['Trouble', @character.trouble],
+      ['Description', @character.description],
+      ['Phase One', @character.phase_one],
+      ['Phase Two', @character.phase_two],
+      ['Phase Three', @character.phase_three] 
+    ]
   end
 
   def stats
@@ -37,6 +42,7 @@ class CharacterPdf < Prawn::Document
   def skill_table
     table skill_rows, header: true, position: :left, row_colors: ['E6E6E6', 'FFFFFF'] do
       row(0).font_style = :bold
+      row(0).background_color = 'FFFFFF'
     end
   end
 
@@ -50,6 +56,7 @@ class CharacterPdf < Prawn::Document
   def stunt_table
     table stunt_rows, header: true, column_widths: [100, 325], position: :right, row_colors: ['E6E6E6', 'FFFFFF'] do
       row(0).font_style = :bold
+      row(0).background_color = 'FFFFFF'
     end
   end
 
