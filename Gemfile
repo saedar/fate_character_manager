@@ -11,6 +11,7 @@ gem 'bson_ext'
 gem 'rspec'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'prawn'
 
 group :doc do
   gem 'sdoc', require: false

@@ -90,3 +90,5 @@
 = link_to 'Edit', edit_character_path(@character)
 |
 = link_to 'Back', characters_path
+|
+= link_to 'Export To PDF', character_path(@character, format: :pdf), target: '_blank'

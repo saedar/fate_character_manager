@@ -10,6 +10,13 @@ class CharactersController < ApplicationController
   # GET /characters/1
   # GET /characters/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CharacterPdf.new(@character)
+        send_data pdf.render, filename: "#{@character.id}.pdf", type: 'application/pdf', disposition: 'inline'
+      end
+    end
   end
 
   # GET /characters/new
