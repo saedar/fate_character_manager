@@ -13,7 +13,7 @@ class CharactersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = CharacterPdf.new(@character)
+        pdf = CharacterPdf.new(@character, view_context)
         send_data pdf.render, filename: "#{@character.id}.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
