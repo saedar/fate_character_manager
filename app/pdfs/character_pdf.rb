@@ -14,7 +14,7 @@ class CharacterPdf < Prawn::Document
     text 'Character Sheet', align: :center, size: 30, style: :bold
 
     move_down 25
-    table header_rows, position: :left, row_colors: ['E6E6E6', 'FFFFFF'] do
+    table header_rows, position: :left, row_colors: ['E6E6E6', 'FFFFFF'], column_widths: [100, 250] do
       column(0).font_style = :bold
     end
   end
@@ -27,7 +27,7 @@ class CharacterPdf < Prawn::Document
       ['Description', @character.description],
       ['Phase One', @character.phase_one],
       ['Phase Two', @character.phase_two],
-      ['Phase Three', @character.phase_three] 
+      ['Phase Three', @character.phase_three]
     ]
   end
 
@@ -35,7 +35,7 @@ class CharacterPdf < Prawn::Document
     move_down 25
     skill_table
 
-    move_up 263
+    move_up 95
     stunt_table
   end
 
