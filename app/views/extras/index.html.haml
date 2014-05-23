@@ -1,33 +1,30 @@
 %h1 Listing extras
-
-%table
-  %tr
-    %th Name
-    %th Permission
-    %th Cost
-    %th Description
-    %th Overcome
-    %th Create
-    %th Attack
-    %th Defend
-    %th
-    %th
-    %th
-
-  - @extras.each do |extra|
+%table.table.table-hover
+  %thead
     %tr
-      %td= extra.name
-      %td= extra.permission
-      %td= extra.cost
-      %td= extra.description
-      %td= extra.overcome
-      %td= extra.create
-      %td= extra.attack
-      %td= extra.defend
-      %td= link_to 'Show', extra
-      %td= link_to 'Edit', edit_extra_path(extra)
-      %td= link_to 'Destroy', extra, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %th Name
+      %th Permission
+      %th Cost
+      %th Description
+      %th Overcome
+      %th Create
+      %th Attack
+      %th Defend
+      %th
+  %tbody
+    - @extras.each do |extra|
+      %tr
+        %td= extra.name
+        %td= extra.permission
+        %td= extra.cost
+        %td= extra.description
+        %td= extra.overcome
+        %td= extra.create
+        %td= extra.attack
+        %td= extra.defend
+        %td
+          = link_to '', extra, class: 'glyphicon glyphicon-eye-open', title: 'View Extra'
+          = link_to '', edit_extra_path(extra), class: 'glyphicon glyphicon-edit', title: 'Edit Extra'
+          = link_to '', extra, class: 'glyphicon glyphicon-remove', title: 'Delete Extra', :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
-
 = link_to 'New Extra', new_extra_path
