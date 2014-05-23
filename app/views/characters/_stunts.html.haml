@@ -1,0 +1,18 @@
+%table.table.table-striped.sheet-components.col-md-6
+  %caption= 'Stunts'
+  %thead
+    %tr
+      %th= 'Name'
+      %th= 'Description'
+      %th
+  %tbody
+    - @character.stunts.each do |stunt|
+      %tr
+        %td= stunt.name
+        %td= stunt.description
+        %td
+          = link_to '', edit_character_stunt_path(character_id: @character.id, id: stunt.id),
+            class: 'glyphicon glyphicon-edit', title: 'Edit Stunt'
+          = link_to '', character_stunt_path(character_id: @character.id, id: stunt.id),
+            class: 'glyphicon glyphicon-remove', title: 'Delete Skill',
+            method: :delete, data: { confirm: 'Are you sure?' }

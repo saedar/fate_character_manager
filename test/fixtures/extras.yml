@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  permission: MyText
+  cost: 
+  description: MyText
+  overcome: MyText
+  create: MyText
+  attack: MyText
+  defend: MyText
+
+two:
+  name: MyString
+  permission: MyText
+  cost: 
+  description: MyText
+  overcome: MyText
+  create: MyText
+  attack: MyText
+  defend: MyText

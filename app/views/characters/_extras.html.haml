@@ -1,0 +1,14 @@
+%table.table.table-striped.sheet-components.col-md-6
+  %caption= 'Extras'
+  %thead
+    %tr
+      %th= 'Extra'
+      %th= 'Description'
+  %tbody
+  - @character.extra_assignments.each do |extra|
+    %tr
+      %td= extra_assignment(extra.extra_id).name
+      %td= extra_assignment(extra.extra_id).description
+      %td
+        = link_to 'Show', extra_path(extra.extra_id)
+        = link_to 'Destroy', character_extra_assignment_path(character_id: @character.id, id: extra.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
