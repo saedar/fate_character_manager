@@ -1,0 +1,19 @@
+%h1 Listing extra_assignments
+
+%table
+  %tr
+    %th Extra
+    %th
+    %th
+    %th
+
+  - @extra_assignments.each do |extra_assignment|
+    %tr
+      %td= extra_assignment.extra_id
+      %td= link_to 'Show', extra_assignment
+      %td= link_to 'Edit', edit_extra_assignment_path(extra_assignment)
+      %td= link_to 'Destroy', extra_assignment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Extra assignment', new_extra_assignment_path

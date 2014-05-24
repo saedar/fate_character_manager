@@ -37,6 +37,9 @@ class CharacterPdf < Prawn::Document
 
     move_up 95
     stunt_table
+
+    move_down 21
+    extra_table
   end
 
   def skill_table
@@ -61,9 +64,23 @@ class CharacterPdf < Prawn::Document
   end
 
   def stunt_rows
-    [['Name', 'Description']] +
+    [['Stunt', 'Description']] +
     @character.stunts.map do |stunt|
       [stunt.name, stunt.description]
+    end
+  end
+
+  def extra_table
+    table extra_rows, header: true, column_widths: [100, 325], position: :right, row_colors: ['E6E6E6', 'FFFFFF'] do
+      row(0).font_style = :bold
+      row(0).background_color = 'FFFFFF'
+    end
+  end
+
+  def extra_rows
+    [['Extra', 'Description']] +
+    @character.extra_assignments.map do |extra|
+      [@view.extra_assignment(extra.extra_id).name, @view.extra_assignment(extra.extra_id).description]
     end
   end
 end

@@ -23,42 +23,12 @@
     = @character.phase_three
 .container-fluid
   - if @character.stunts.size > 0
-    %table.table.table-striped.sheet-components.col-md-6
-      %caption= 'Stunts'
-      %thead
-        %tr
-          %th= 'Name'
-          %th= 'Description'
-          %th
-      %tbody
-        - @character.stunts.each do |stunt|
-          %tr
-            %td= stunt.name
-            %td= stunt.description
-            %td
-              = link_to '', edit_character_stunt_path(character_id: @character.id, id: stunt.id),
-                class: 'glyphicon glyphicon-edit', title: 'Edit Stunt'
-              = link_to '', character_stunt_path(character_id: @character.id, id: stunt.id),
-                class: 'glyphicon glyphicon-remove', title: 'Delete Skill',
-                method: :delete, data: { confirm: 'Are you sure?' }
+    = render 'stunts'
   - if @character.skill_assignments.size > 0
-    %table.table.table-striped.sheet-components.col-md-6
-      %caption= 'Skills'
-      %thead
-        %tr
-          %th= 'Skill'
-          %th= 'Value'
-      %tbody
-      - @character.skill_assignments.sort_by{|s|-1 * s.level.to_i}.each do |skill|
-        %tr
-          %td= skill_assignment(skill.skill_id).name
-          %td= skill.level
-          %td
-            = link_to '', edit_character_skill_assignment_path(character_id: @character.id, id: skill.id),
-              class: 'glyphicon glyphicon-edit', title: 'Edit Skill Value'
-            = link_to '', character_skill_assignment_path(character_id: @character.id, id: skill.id),
-              class: 'glyphicon glyphicon-remove', title: 'Delete Skill',
-              method: :delete, data: { confirm: 'Are you sure?' }
+    = render 'skills'
+.container-fluid
+  - if @character.extra_assignments.size > 0
+    = render 'extras'
 .container-fluid
   = form_for [@character, Stunt.new] do |f|
     %fieldset.sheet-components.col-md-6
@@ -86,6 +56,15 @@
         = f.number_field :level, {size: 2, maxlength: 2, min: 0, max: 10}
       .actions
         = f.submit 'Add Skill', class: 'btn btn-primary'
+  = form_for [@character, ExtraAssignment.new] do |f|
+    %fieldset.sheet-components.col-md-6
+      %legend= 'New Extra'
+      .field
+        = f.label :extra_id, 'Extra'
+        %br/
+        = select('extra_assignment', 'extra_id', Extra.all.collect {|p| [ p.name, p.id ] }, {include_blank: true})
+      .actions
+        = f.submit 'Add Extra', class: 'btn btn-primary'
 
 = link_to 'Edit', edit_character_path(@character)
 |

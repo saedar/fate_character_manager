@@ -1,0 +1,17 @@
+%table.table.table-striped.sheet-components.col-md-6
+  %caption= 'Skills'
+  %thead
+    %tr
+      %th= 'Skill'
+      %th= 'Value'
+  %tbody
+  - @character.skill_assignments.sort_by{|s|-1 * s.level.to_i}.each do |skill|
+    %tr
+      %td= skill_assignment(skill.skill_id).name
+      %td= skill.level
+      %td
+        = link_to '', edit_character_skill_assignment_path(character_id: @character.id, id: skill.id),
+          class: 'glyphicon glyphicon-edit', title: 'Edit Skill Value'
+        = link_to '', character_skill_assignment_path(character_id: @character.id, id: skill.id),
+          class: 'glyphicon glyphicon-remove', title: 'Delete Skill',
+          method: :delete, data: { confirm: 'Are you sure?' }

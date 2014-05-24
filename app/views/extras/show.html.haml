@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @extra.name
+%p
+  %b Permission:
+  = @extra.permission
+%p
+  %b Cost:
+  = @extra.cost
+%p
+  %b Description:
+  = @extra.description
+%p
+  %b Overcome:
+  = @extra.overcome
+%p
+  %b Create:
+  = @extra.create
+%p
+  %b Attack:
+  = @extra.attack
+%p
+  %b Defend:
+  = @extra.defend
+
+= link_to 'Edit', edit_extra_path(@extra)
+\|
+= link_to 'Back', extras_path

@@ -1,12 +1,17 @@
 FateCharacterManager::Application.routes.draw do
 
+
+  resources :extra_assignments
+
   get "attribution/index"
   resources :characters do
     resources :skill_assignments
     resources :stunts
+    resources :extra_assignments
   end
 
   resources :skills
+  resources :extras
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

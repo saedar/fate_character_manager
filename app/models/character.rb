@@ -10,4 +10,5 @@ class Character
 
   embeds_many :skill_assignments
   embeds_many :stunts
+  embeds_many :extra_assignments
 end

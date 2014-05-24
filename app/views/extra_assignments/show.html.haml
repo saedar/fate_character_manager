@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Extra:
+  = @extra_assignment.extra_id
+
+= link_to 'Edit', edit_extra_assignment_path(@extra_assignment)
+\|
+= link_to 'Back', extra_assignments_path
