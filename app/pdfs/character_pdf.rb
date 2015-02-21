@@ -35,7 +35,7 @@ class CharacterPdf < Prawn::Document
     move_down 25
     skill_table
 
-    move_up 95
+    move_up 263
     stunt_table
 
     move_down 21
