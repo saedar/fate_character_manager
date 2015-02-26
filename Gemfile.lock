@@ -92,9 +92,6 @@ GEM
       pry-remote (>= 0.1.7)
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
-    jbuilder (1.5.3)
-      activesupport (>= 3.0.0)
-      multi_json (>= 1.2.0)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -209,7 +206,6 @@ DEPENDENCIES
   bson_ext
   haml-rails
   jazz_hands
-  jbuilder (~> 1.2)
   jquery-rails
   mongoid (~> 4.0.0.beta1)!
   prawn
