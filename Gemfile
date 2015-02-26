@@ -11,10 +11,6 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'prawn', '~> 2.0.0'
 gem 'prawn-table', '~> 0.2.1'
 
-group :doc do
-  gem 'sdoc', require: false
-end
-
 group :development, :test do
   gem 'jazz_hands', '~> 0.5.2'
 end
