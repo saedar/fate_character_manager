@@ -40,7 +40,7 @@
       .field
         = f.label :description
         %br/
-        = f.text_area :description, size: "50x4"
+        = f.text_area :description, size: "40x6"
       .actions
         = f.submit 'Add Stunt', class: 'btn btn-primary'
   = form_for [@character, SkillAssignment.new] do |f|
