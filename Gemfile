@@ -7,7 +7,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'mongoid', '~> 4.0.0.beta1', github: 'mongoid/mongoid'
 gem 'bson_ext'
-gem 'rspec'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'prawn'
@@ -18,4 +17,8 @@ end
 
 group :development, :test do
   gem 'jazz_hands'
+end
+
+group :test do
+  gem 'rspec', '~> 3.2.0'
 end
